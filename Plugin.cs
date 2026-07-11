@@ -15,7 +15,7 @@ public class AimCrouchTogglesPlugin : BaseUnityPlugin
 {
     public const string PluginGUID = "sparroh.aimcrouchtoggles";
     public const string PluginName = "AimCrouchToggles";
-    public const string PluginVersion = "1.0.0";
+    public const string PluginVersion = "1.1.0";
 
     internal static new ManualLogSource Logger;
 

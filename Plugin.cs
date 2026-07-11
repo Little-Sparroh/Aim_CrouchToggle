@@ -45,8 +45,8 @@ public class AimCrouchTogglesPlugin : BaseUnityPlugin
         Instance = this;
         Logger = base.Logger;
 
-        toggleAim = Config.Bind("General", "Toggle Aim", false, "If true, aim becomes a toggle (press to enter/exit) instead of hold.");
-        toggleCrouch = Config.Bind("General", "Toggle Crouch", false, "If true, enables toggle crouch functionality (hold crouch by pressing slide button).");
+        toggleAim = Config.Bind("General", "Toggle Aim", true, "If true, aim becomes a toggle (press to enter/exit) instead of hold.");
+        toggleCrouch = Config.Bind("General", "Toggle Crouch", true, "If true, enables toggle crouch functionality (hold crouch by pressing slide button).");
 
         toggleAim.SettingChanged += OnToggleAimChanged;
         toggleCrouch.SettingChanged += OnToggleCrouchChanged;

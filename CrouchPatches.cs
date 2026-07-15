@@ -10,7 +10,7 @@ public static class ToggleCrouchPatches
     [HarmonyPrefix]
     public static void Prefix(Player __instance)
     {
-        if (AimCrouchTogglesPlugin.toggleCrouch.Value && PlayerInput.Controls.Player.Slide.WasPressedThisFrame())
+        if (AimAndCrouchTogglesPlugin.toggleCrouch.Value && PlayerInput.Controls.Player.Slide.WasPressedThisFrame())
         {
             var crouchingProp = typeof(Player).GetProperty("Crouching");
             var slidingProp = typeof(Player).GetProperty("Sliding");
@@ -36,7 +36,7 @@ public static class EndCrouchPatches
     [HarmonyPrefix]
     static bool Prefix()
     {
-        return !(AimCrouchTogglesPlugin.toggleCrouch.Value && ToggleCrouchPatches.isToggleOn);
+        return !(AimAndCrouchTogglesPlugin.toggleCrouch.Value && ToggleCrouchPatches.isToggleOn);
     }
 }
 
@@ -47,6 +47,6 @@ public static class EndSlidePatches
     [HarmonyPrefix]
     static bool Prefix()
     {
-        return !(AimCrouchTogglesPlugin.toggleCrouch.Value && ToggleCrouchPatches.isToggleOn);
+        return !(AimAndCrouchTogglesPlugin.toggleCrouch.Value && ToggleCrouchPatches.isToggleOn);
     }
 }

@@ -1,4 +1,4 @@
-# AimCrouchToggles
+# AimAndCrouchToggles
 
 A BepInEx mod for Mycopunk that adds optional toggle aim and toggle crouch.
 
@@ -36,7 +36,7 @@ dotnet build --configuration Release
 2. The mod will be automatically installed to the correct directory
 
 **Manual Installation**:
-1. Place the built `AimCrouchToggles.dll` in your `<Mycopunk Directory>/BepInEx/plugins/` folder
+1. Place the built `AimAndCrouchToggles.dll` in your `<Mycopunk Directory>/BepInEx/plugins/` folder
 
 ### Executing program
 
@@ -44,7 +44,7 @@ The mod loads automatically through BepInEx when the game starts. Check the BepI
 
 ## Configuration
 
-Access mod settings through the BepInEx configuration file at `<Mycopunk Directory>/BepInEx/config/sparroh.aimcrouchtoggles.cfg`:
+Access mod settings through the BepInEx configuration file at `<Mycopunk Directory>/BepInEx/config/sparroh.aimandcrouchtoggles.cfg`:
 
 | Setting | Default | Description |
 |---------|---------|-------------|

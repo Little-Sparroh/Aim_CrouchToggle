@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net48</TargetFramework>
-        <AssemblyName>AimCrouchToggles</AssemblyName>
-        <Product>AimCrouchToggles</Product>
+        <AssemblyName>AimAndCrouchToggles</AssemblyName>
+        <Product>AimAndCrouchToggles</Product>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <LangVersion>latest</LangVersion>
         <RestoreAdditionalProjectSources>
@@ -11,7 +11,7 @@
             https://nuget.bepinex.dev/v3/index.json;
             https://nuget.samboy.dev/v3/index.json
         </RestoreAdditionalProjectSources>
-        <RootNamespace>AimCrouchToggles</RootNamespace>
+        <RootNamespace>AimAndCrouchToggles</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

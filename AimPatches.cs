@@ -9,34 +9,34 @@ public static class ToggleAimPatches
     [HarmonyPostfix]
     public static void PlayerInputInitializePostfix()
     {
-        AimCrouchTogglesPlugin.aimAction = PlayerInput.Controls?.Player.Aim;
-        AimCrouchTogglesPlugin.ConfigureAimSubscription();
+        AimAndCrouchTogglesPlugin.aimAction = PlayerInput.Controls?.Player.Aim;
+        AimAndCrouchTogglesPlugin.ConfigureAimSubscription();
     }
 
     [HarmonyPatch(typeof(Gun), "OnAimInputPerformed")]
     [HarmonyPrefix]
     public static bool SkipPrefix()
     {
-        return !AimCrouchTogglesPlugin.toggleAim.Value;
+        return !AimAndCrouchTogglesPlugin.toggleAim.Value;
     }
 
     [HarmonyPatch(typeof(Gun), "OnAimInputCancelled")]
     [HarmonyPrefix]
     public static bool SkipPrefixCancelled()
     {
-        return !AimCrouchTogglesPlugin.toggleAim.Value;
+        return !AimAndCrouchTogglesPlugin.toggleAim.Value;
     }
 
     [HarmonyPatch(typeof(Gun), "HandleAim")]
     [HarmonyPrefix]
     public static void HandleAimPrefix(Gun __instance)
     {
-        if (AimCrouchTogglesPlugin.toggleAim.Value)
+        if (AimAndCrouchTogglesPlugin.toggleAim.Value)
         {
-            AimCrouchTogglesPlugin.isAimInputHeldField.SetValue(__instance, AimCrouchTogglesPlugin.isAimToggled);
-            if (AimCrouchTogglesPlugin.isAimToggled)
+            AimAndCrouchTogglesPlugin.isAimInputHeldField.SetValue(__instance, AimAndCrouchTogglesPlugin.isAimToggled);
+            if (AimAndCrouchTogglesPlugin.isAimToggled)
             {
-                AimCrouchTogglesPlugin.lastPressedAimTimeField.SetValue(__instance, Time.time);
+                AimAndCrouchTogglesPlugin.lastPressedAimTimeField.SetValue(__instance, Time.time);
             }
         }
     }
@@ -45,13 +45,13 @@ public static class ToggleAimPatches
     [HarmonyPostfix]
     public static void UpdatePostfix(Gun __instance)
     {
-        if (AimCrouchTogglesPlugin.toggleAim.Value)
+        if (AimAndCrouchTogglesPlugin.toggleAim.Value)
         {
-            bool isAiming = (bool)AimCrouchTogglesPlugin.isAimingGetter.Invoke(__instance, null);
-            bool wantsToFire = (bool)AimCrouchTogglesPlugin.wantsToFireGetter.Invoke(__instance, null);
-            float lastFireTime = (float)AimCrouchTogglesPlugin.lastFireTimeGetter.Invoke(__instance, null);
-            float lastPressedFireTime = (float)AimCrouchTogglesPlugin.lastPressedFireTimeField.GetValue(__instance);
-            Player player = (Player)AimCrouchTogglesPlugin.playerField.GetValue(__instance);
+            bool isAiming = (bool)AimAndCrouchTogglesPlugin.isAimingGetter.Invoke(__instance, null);
+            bool wantsToFire = (bool)AimAndCrouchTogglesPlugin.wantsToFireGetter.Invoke(__instance, null);
+            float lastFireTime = (float)AimAndCrouchTogglesPlugin.lastFireTimeGetter.Invoke(__instance, null);
+            float lastPressedFireTime = (float)AimAndCrouchTogglesPlugin.lastPressedFireTimeField.GetValue(__instance);
+            Player player = (Player)AimAndCrouchTogglesPlugin.playerField.GetValue(__instance);
             if (player != null && !isAiming && !wantsToFire && Time.time - Mathf.Max(lastFireTime, lastPressedFireTime) > 0.5f)
             {
                 player.ResumeSprint();
@@ -63,6 +63,6 @@ public static class ToggleAimPatches
     [HarmonyPostfix]
     public static void ResetTogglePostfix()
     {
-        AimCrouchTogglesPlugin.isAimToggled = false;
+        AimAndCrouchTogglesPlugin.isAimToggled = false;
     }
 }

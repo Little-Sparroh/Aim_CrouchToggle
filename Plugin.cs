@@ -11,10 +11,10 @@ using UnityEngine.InputSystem;
 
 [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
 [MycoMod(null, ModFlags.IsClientSide)]
-public class AimCrouchTogglesPlugin : BaseUnityPlugin
+public class AimAndCrouchTogglesPlugin : BaseUnityPlugin
 {
-    public const string PluginGUID = "sparroh.aimcrouchtoggles";
-    public const string PluginName = "AimCrouchToggles";
+    public const string PluginGUID = "sparroh.aimandcrouchtoggles";
+    public const string PluginName = "AimAndCrouchToggles";
     public const string PluginVersion = "1.1.0";
 
     internal static new ManualLogSource Logger;
@@ -33,7 +33,7 @@ public class AimCrouchTogglesPlugin : BaseUnityPlugin
     internal static MethodInfo wantsToFireGetter;
     internal static MethodInfo lastFireTimeGetter;
 
-    internal static AimCrouchTogglesPlugin Instance { get; set; }
+    internal static AimAndCrouchTogglesPlugin Instance { get; set; }
 
     private FileSystemWatcher configWatcher;
     private volatile bool configReloadPending;
